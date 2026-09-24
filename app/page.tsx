@@ -34,7 +34,7 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="hero-photo" />
         <div className="hero-shade" />
-        <div className="hero-content"><p className="eyebrow light"><i /> BUILT FOR THE WAY OUT THERE</p><h1>Some roads<br />stay with you<span>.</span></h1><p className="hero-copy">Premium motorcycle and automotive adventures, built around extraordinary roads, remote places and the people you meet along the way.</p><div className="hero-actions"><button className="button gold" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>Find your adventure <b>↗</b></button><a className="text-link" href="#adventures">Explore the journeys <span>↓</span></a></div></div>
+        <div className="hero-content"><p className="eyebrow light"><i /> BUILT FOR THE WAY OUT THERE</p><h1>Some roads<br />stay with you Always<span>.</span></h1><p className="hero-copy">Premium motorcycle and automotive adventures, built around extraordinary roads, remote places and the people you meet along the way.</p><div className="hero-actions"><button className="button gold" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>Find your adventure <b>↗</b></button><a className="text-link" href="#adventures">Explore the journeys <span>↓</span></a></div></div>
         <div className="hero-bottom"><span>18°31′N&nbsp; 73°51′E&nbsp; · &nbsp;PUNE, INDIA</span><span>GO FURTHER. COME BACK DIFFERENT.</span><span>01 / 04</span></div>
         <div className="vertical-note">CROSSBORDER · PUNE, INDIA</div>
       </section>
