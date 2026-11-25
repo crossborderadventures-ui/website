@@ -29,7 +29,7 @@ export default function Home() {
   }
 
   return <>
-    <header className="topbar"><a className="wordmark" href="#home" aria-label="Crossborder Adventures home"><span className="mark">C<span>↗</span></span><span>CROSSBORDER<small>ADVENTURES · INDIA</small></span></a><nav><a href="#adventures">Adventures</a><a href="#brands">For brands</a><a href="#story">Our approach</a></nav><a className="nav-cta" href="#contact">Plan an adventure <span>↗</span></a><button className="menu" onClick={() => setOpen(true)} aria-label="Find your adventure">☰</button></header>
+    <header className="topbar"><a className="wordmark" href="#home" aria-label="Crossborder Adventures home"><span className="mark">C<span>↗</span></span><span>CROSSBORDER<small>ADVENTURES · INDIA</small></span></a><nav aria-label="Main navigation"><a href="#adventures">Motorcycle tours</a><a href="#adventures">Destinations</a><a href="#brands">Training</a><a href="#contact">Private Experiences</a><a href="#brands">For Brands</a><a href="#story">About</a><a href="#contact">Contact</a></nav><a className="header-instagram" href="https://www.instagram.com/crossborderadventures/" target="_blank" rel="noopener noreferrer" aria-label="Crossborder Adventures on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="17.5" cy="6.8" r="1.1" fill="currentColor"/></svg></a><button className="menu" onClick={() => setOpen(true)} aria-label="Find your adventure">☰</button></header>
     <main>
       <section id="home" className="hero">
         <div className="hero-photo" />
