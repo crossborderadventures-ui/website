@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import SiteHeader from "./components/site-header";
+import SiteFooter from "./components/site-footer";
 
 const wa = "919356378178";
 const experiences = [
@@ -13,7 +15,6 @@ function waLink(message: string) { return `https://wa.me/${wa}?text=${encodeURIC
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-  const [mobileNav, setMobileNav] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const questions = [
@@ -30,17 +31,7 @@ export default function Home() {
   }
 
   return <>
-    <header className="topbar">
-      <a className="wordmark wordmark-header" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a>
-      <nav className="desktop-nav" aria-label="Main navigation">
-        <a href="#adventures">ADVENTURES</a><a href="#adventures">DESTINATIONS</a><a href="#brands">TRAINING</a><a href="#contact">PRIVATE EXPERIENCES</a><a href="#brands">FOR BRANDS</a><a href="#story">ABOUT</a>
-      </nav>
-      <a className="nav-contact" href="#contact">CONTACT</a>
-      <button className="menu" onClick={() => setMobileNav(!mobileNav)} aria-label={mobileNav ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileNav}>{mobileNav ? "×" : "☰"}</button>
-    </header>
-    {mobileNav && <nav className="mobile-nav" aria-label="Mobile navigation">
-      <a href="#adventures" onClick={() => setMobileNav(false)}>ADVENTURES</a><a href="#adventures" onClick={() => setMobileNav(false)}>DESTINATIONS</a><a href="#brands" onClick={() => setMobileNav(false)}>TRAINING</a><a href="#contact" onClick={() => setMobileNav(false)}>PRIVATE EXPERIENCES</a><a href="#brands" onClick={() => setMobileNav(false)}>FOR BRANDS</a><a href="#story" onClick={() => setMobileNav(false)}>ABOUT</a><a href="#contact" onClick={() => setMobileNav(false)}>CONTACT</a>
-    </nav>}
+    <SiteHeader />
     <main>
       <section id="home" className="hero">
         <div className="hero-photo" />
@@ -65,7 +56,7 @@ export default function Home() {
       <section className="proof section-pad"><div><span className="proof-number">04<span>+</span></span><p>YEARS MAKING<br />ROOM FOR ADVENTURE</p></div><div><span className="proof-number">75<span>+</span></span><p>INTERNATIONAL<br />PODIUM FINISHES*</p></div><div><span className="proof-number">05</span><p>OEM PARTNERSHIPS*</p></div><small>*Business proof points supplied in the discovery brief. Confirm exact wording and evidence before launch.</small></section>
       <section id="contact" className="closing"><p className="eyebrow light"><i /> YOUR NEXT STORY STARTS HERE</p><h2>Where do you<br /><em>want to go?</em></h2><p>A weekend away, a road across the mountains, a journey built just for you.</p><div><button className="button gold" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>Let’s find your adventure <b>↗</b></button><a className="text-link" href={waLink("Hello Crossborder Adventures, I'd like to talk about an upcoming adventure.")}>Or chat on WhatsApp <span>↗</span></a></div></section>
     </main>
-    <footer><a className="wordmark wordmark-footer" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a><div className="footer-contact"><a href="tel:+919356378178">+91 93563 78178</a><a href="mailto:crossborderadventures@gmail.com">crossborderadventures@gmail.com</a><a href="https://www.instagram.com/crossborderadventures/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href={waLink("Hello Crossborder Adventures!")} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><span>Pune, Maharashtra, India</span></div><div className="footer-bottom"><span>© 2026 CROSSBORDER ADVENTURES</span><span>MADE FOR THE WAY OUT THERE.</span><a href="mailto:crossborderadventures@gmail.com?subject=Privacy%20policy">PRIVACY · CONTACT</a></div></footer>
+    <SiteFooter />
     <div className="mobile-bar"><a href="#adventures">EXPLORE</a><button onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>FIND YOUR ADVENTURE <span>↗</span></button><a href={waLink("Hello Crossborder Adventures!")}>WHATSAPP</a></div>
     {open && <div className="quiz-backdrop" role="dialog" aria-modal="true" aria-label="Adventure matchmaker"><div className="quiz"><button className="quiz-close" onClick={() => setOpen(false)} aria-label="Close">×</button><p className="eyebrow"><i /> FIND YOUR ADVENTURE</p><div className="quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div><span className="quiz-step">0{step + 1} / 0{questions.length}</span><h2>{questions[step].title}</h2><div className="quiz-options">{questions[step].options.map(o => <button key={o} onClick={() => choose(o)}>{o}<span>↗</span></button>)}</div><p className="quiz-foot">A few quick answers help us point you in the right direction.</p></div></div>}
   </>;
