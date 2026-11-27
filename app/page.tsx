@@ -13,6 +13,7 @@ function waLink(message: string) { return `https://wa.me/${wa}?text=${encodeURIC
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const questions = [
@@ -29,14 +30,32 @@ export default function Home() {
   }
 
   return <>
-    <header className="topbar"><a className="wordmark wordmark-header" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a><nav aria-label="Main navigation"><a href="#adventures">Motorcycle tours</a><a href="#adventures">Destinations</a><a href="#brands">Training</a><a href="#contact">Private Experiences</a><a href="#brands">For Brands</a><a href="#story">About</a><a href="#contact">Contact</a></nav><div className="header-social"><a className="header-instagram" href="https://www.instagram.com/crossborderadventures/" target="_blank" rel="noopener noreferrer" aria-label="Crossborder Adventures on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="17.5" cy="6.8" r="1.1" fill="currentColor"/></svg></a><a className="header-whatsapp" href={waLink("Hello Crossborder Adventures!")} target="_blank" rel="noopener noreferrer" aria-label="Chat with Crossborder Adventures on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.3l1.2-4.7A8.5 8.5 0 1 1 20.5 11.7Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"/><path d="M8.4 7.9c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.3.2.3.4 0 .3-.2 1.1-.7 1.5-.5.4-1.1.6-1.8.5-.7-.1-1.6-.4-2.8-1.2-1.4-.9-2.4-2.1-2.9-3-.5-.9-.7-1.7-.6-2.3.1-.6.5-1.1.8-1.3Z" fill="currentColor"/></svg></a></div><button className="menu" onClick={() => setOpen(true)} aria-label="Find your adventure">☰</button></header>
+    <header className="topbar">
+      <a className="wordmark wordmark-header" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a>
+      <nav className="desktop-nav" aria-label="Main navigation">
+        <a href="#adventures">ADVENTURES</a><a href="#adventures">DESTINATIONS</a><a href="#brands">TRAINING</a><a href="#contact">PRIVATE EXPERIENCES</a><a href="#brands">FOR BRANDS</a><a href="#story">ABOUT</a>
+      </nav>
+      <a className="nav-contact" href="#contact">CONTACT</a>
+      <button className="menu" onClick={() => setMobileNav(!mobileNav)} aria-label={mobileNav ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileNav}>{mobileNav ? "×" : "☰"}</button>
+    </header>
+    {mobileNav && <nav className="mobile-nav" aria-label="Mobile navigation">
+      <a href="#adventures" onClick={() => setMobileNav(false)}>ADVENTURES</a><a href="#adventures" onClick={() => setMobileNav(false)}>DESTINATIONS</a><a href="#brands" onClick={() => setMobileNav(false)}>TRAINING</a><a href="#contact" onClick={() => setMobileNav(false)}>PRIVATE EXPERIENCES</a><a href="#brands" onClick={() => setMobileNav(false)}>FOR BRANDS</a><a href="#story" onClick={() => setMobileNav(false)}>ABOUT</a><a href="#contact" onClick={() => setMobileNav(false)}>CONTACT</a>
+    </nav>}
     <main>
       <section id="home" className="hero">
         <div className="hero-photo" />
         <div className="hero-shade" />
-        <div className="hero-content"><p className="eyebrow light"><i /> BUILT FOR THE WAY OUT THERE</p><h1>Some roads<br />stay with you Always<span>.</span></h1><p className="hero-copy">Premium motorcycle and automotive adventures, built around extraordinary roads, remote places and the people you meet along the way.</p><div className="hero-actions"><button className="button gold" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>Find your adventure <b>↗</b></button><a className="text-link" href="#adventures">Explore the journeys <span>↓</span></a></div></div>
-        <div className="hero-bottom"><span>18°31′N&nbsp; 73°51′E&nbsp; · &nbsp;PUNE, INDIA</span><span>GO FURTHER. COME BACK DIFFERENT.</span><span>01 / 04</span></div>
-        <div className="vertical-note">CROSSBORDER · PUNE, INDIA</div>
+        <div className="hero-content">
+          <p className="eyebrow light"><i /> CROSSBORDER ADVENTURES</p>
+          <h1>GO BEYOND<br />THE ROAD.</h1>
+          <p className="hero-copy">Premium motorcycle &amp; automotive adventures<br className="desktop-break" /> built around extraordinary roads, remote destinations<br className="desktop-break" /> and experiences worth remembering.</p>
+          <div className="hero-actions">
+            <a className="button gold" href="#adventures">EXPLORE RIDES <b>→</b></a>
+            <button className="button hero-secondary" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>PLAN YOUR ADVENTURE</button>
+            <a className="button hero-partner" href="#brands">PARTNER WITH US</a>
+          </div>
+        </div>
+        <a className="scroll-explore" href="#adventures"><span>SCROLL TO EXPLORE</span><i aria-hidden="true">⌄</i></a>
       </section>
       <section className="intro section-pad"><div className="intro-label"><span className="eyebrow"><i /> A DIFFERENT KIND OF JOURNEY</span><span className="index">01 — 04</span></div><div className="intro-body"><h2>Not just a ride.<br /><em>A story you come back with.</em></h2><div className="intro-right"><p>We turn touring into experiences. Every journey is shaped by route intelligence, thoughtful planning and a moment you couldn’t have found on your own.</p><a href="#story" className="arrow-link">The Crossborder way <span>↗</span></a></div></div></section>
       <section id="adventures" className="adventures section-pad"><div className="section-head"><div><p className="eyebrow"><i /> THE ROAD IS YOURS</p><h2>Choose your <em>horizon.</em></h2></div><a className="arrow-link" href="#contact">See all experiences <span>↗</span></a></div><div className="experience-grid">{experiences.map((e) => <article className="experience" key={e.no}><a href="#contact" className="experience-image" style={{ backgroundImage: `url(https://images.unsplash.com/${e.image}?auto=format&fit=crop&w=1200&q=85)` }}><span className="card-number">{e.no} / 03</span><span className="card-arrow">↗</span><span className="image-caption">{e.note}</span></a><div className="experience-meta"><span>{e.category}</span><span>{e.days}</span></div><h3>{e.name}</h3><p>{e.place}</p></article>)}</div><div className="availability"><span className="pulse" /> NEW JOURNEYS ARE TAKING SHAPE <button onClick={() => setOpen(true)}>Tell us what you’re looking for <span>↗</span></button></div></section>
@@ -46,7 +65,7 @@ export default function Home() {
       <section className="proof section-pad"><div><span className="proof-number">04<span>+</span></span><p>YEARS MAKING<br />ROOM FOR ADVENTURE</p></div><div><span className="proof-number">75<span>+</span></span><p>INTERNATIONAL<br />PODIUM FINISHES*</p></div><div><span className="proof-number">05</span><p>OEM PARTNERSHIPS*</p></div><small>*Business proof points supplied in the discovery brief. Confirm exact wording and evidence before launch.</small></section>
       <section id="contact" className="closing"><p className="eyebrow light"><i /> YOUR NEXT STORY STARTS HERE</p><h2>Where do you<br /><em>want to go?</em></h2><p>A weekend away, a road across the mountains, a journey built just for you.</p><div><button className="button gold" onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>Let’s find your adventure <b>↗</b></button><a className="text-link" href={waLink("Hello Crossborder Adventures, I'd like to talk about an upcoming adventure.")}>Or chat on WhatsApp <span>↗</span></a></div></section>
     </main>
-    <footer><a className="wordmark wordmark-footer" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a><div className="footer-contact"><a href="tel:+919356378178">+91 93563 78178</a><a href="mailto:crossborderadventures@gmail.com">crossborderadventures@gmail.com</a><span>Pune, Maharashtra, India</span></div><div className="footer-bottom"><span>© 2026 CROSSBORDER ADVENTURES</span><span>MADE FOR THE WAY OUT THERE.</span><a href="mailto:crossborderadventures@gmail.com?subject=Privacy%20policy">PRIVACY · CONTACT</a></div></footer>
+    <footer><a className="wordmark wordmark-footer" href="#home" aria-label="Crossborder Adventures home"><img className="wordmark-logo" src="/MASTER%20LOGO%201.png" alt="Crossborder Adventures" /></a><div className="footer-contact"><a href="tel:+919356378178">+91 93563 78178</a><a href="mailto:crossborderadventures@gmail.com">crossborderadventures@gmail.com</a><a href="https://www.instagram.com/crossborderadventures/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href={waLink("Hello Crossborder Adventures!")} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><span>Pune, Maharashtra, India</span></div><div className="footer-bottom"><span>© 2026 CROSSBORDER ADVENTURES</span><span>MADE FOR THE WAY OUT THERE.</span><a href="mailto:crossborderadventures@gmail.com?subject=Privacy%20policy">PRIVACY · CONTACT</a></div></footer>
     <div className="mobile-bar"><a href="#adventures">EXPLORE</a><button onClick={() => { setOpen(true); setStep(0); setAnswers([]); }}>FIND YOUR ADVENTURE <span>↗</span></button><a href={waLink("Hello Crossborder Adventures!")}>WHATSAPP</a></div>
     {open && <div className="quiz-backdrop" role="dialog" aria-modal="true" aria-label="Adventure matchmaker"><div className="quiz"><button className="quiz-close" onClick={() => setOpen(false)} aria-label="Close">×</button><p className="eyebrow"><i /> FIND YOUR ADVENTURE</p><div className="quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div><span className="quiz-step">0{step + 1} / 0{questions.length}</span><h2>{questions[step].title}</h2><div className="quiz-options">{questions[step].options.map(o => <button key={o} onClick={() => choose(o)}>{o}<span>↗</span></button>)}</div><p className="quiz-foot">A few quick answers help us point you in the right direction.</p></div></div>}
   </>;
